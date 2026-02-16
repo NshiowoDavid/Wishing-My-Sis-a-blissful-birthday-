@@ -1,184 +1,36 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Esther 🎉</title>
-
-<style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #ff758c, #ff7eb3);
-    text-align: center;
-    color: white;
-    overflow-x: hidden;
-}
-
-h1 {
-    font-size: 3.5em;
-    margin-top: 40px;
-}
-
-.glow {
-    animation: glow 1.5s infinite alternate;
-}
-
-@keyframes glow {
-    from { text-shadow: 0 0 10px #fff, 0 0 20px #ff4da6; }
-    to { text-shadow: 0 0 25px #fff, 0 0 40px #ff1a75; }
-}
-
-#countdown {
-    font-size: 2em;
-    margin-top: 20px;
-}
-
-button {
-    padding: 15px 30px;
-    font-size: 18px;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    background: white;
-    color: #ff4081;
-    margin-top: 20px;
-}
-
-#wish {
-    display: none;
-    font-size: 1.5em;
-    margin-top: 20px;
-}
-
-.gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    padding: 20px;
-}
-
-.gallery img {
-    width: 250px;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-}
-
-.balloon {
-    position: fixed;
-    bottom: -150px;
-    width: 60px;
-    height: 80px;
-    border-radius: 50%;
-    animation: float 10s linear infinite;
-    opacity: 0.7;
-}
-
-@keyframes float {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-120vh); }
-}
-
-.confetti {
-    position: fixed;
-    width: 10px;
-    height: 10px;
-    top: -10px;
-    animation: confettiFall 5s linear infinite;
-}
-
-@keyframes confettiFall {
-    to { transform: translateY(110vh) rotate(720deg); }
-}
-
-footer {
-    padding: 20px;
-}
-</style>
+    <meta charset="UTF-8">
+    <title>Dẽẽ’s FoodLink App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<h1>🎂 Happy Birthday <span class="glow">Esther</span> 🎉</h1>
+<header>
+    <h1>Dẽẽ’s FoodLink</h1>
+</header>
 
-<div id="countdown"></div>
-
-<p>Counting down to your special moment at 12:00 AM 💖</p>
-
-<button onclick="showWish()">Click for a Special Wish ✨</button>
-
-<div id="wish">
-You are truly amazing, Esther! May this year bring success, happiness, love, and unforgettable memories! 🌟💫
-</div>
-
-<section class="gallery">
-<img src="photo1.jpeg" alt="Esther Photo">
-<img src="photo2.jpeg" alt="Esther Photo">
-<img src="photo3.jpeg" alt="Esther Photo">
-<img src="photo4.jpeg" alt="Esther Photo">
-<img src="photo5.jpeg" alt="Esther Photo">
-<img src="photo6.jpeg" alt="Esther Photo">
-
+<section class="container">
+    <h2>Register as Seller</h2>
+    <form id="sellerForm">
+        <input type="text" placeholder="Business Name" required>
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Password" required>
+        <button type="submit">Register</button>
+    </form>
 </section>
 
-<footer>
-Made with ❤️ just for you Esther
-</footer>
+<section class="container">
+    <h2>Make Payment</h2>
+    <form id="paymentForm">
+        <input type="text" placeholder="Card Number" required>
+        <input type="text" placeholder="Amount (₦)" required>
+        <button type="submit">Pay Now</button>
+    </form>
+</section>
 
-<audio autoplay loop>
-  <source src="https://www.bensound.com/bensound-music/bensound-happyrock.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-function showWish() {
-    document.getElementById("wish").style.display = "block";
-}
-
-// Countdown to next 12:00 AM
-function updateCountdown() {
-    const now = new Date();
-    const tomorrowMidnight = new Date();
-    tomorrowMidnight.setHours(24,0,0,0);
-
-    const diff = tomorrowMidnight - now;
-
-    const hours = Math.floor(diff / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-    document.getElementById("countdown").innerHTML =
-        hours + "h " + minutes + "m " + seconds + "s ";
-
-    if (diff <= 0) {
-        document.getElementById("countdown").innerHTML = "🎉 IT'S MIDNIGHT! 🎉";
-    }
-}
-
-setInterval(updateCountdown, 1000);
-updateCountdown();
-
-// Balloons
-for (let i = 0; i < 12; i++) {
-    let balloon = document.createElement("div");
-    balloon.className = "balloon";
-    balloon.style.left = Math.random() * 100 + "vw";
-    balloon.style.background = "hsl(" + Math.random() * 360 + ", 70%, 60%)";
-    balloon.style.animationDuration = (8 + Math.random() * 5) + "s";
-    document.body.appendChild(balloon);
-}
-
-// Confetti
-for (let i = 0; i < 60; i++) {
-    let confetti = document.createElement("div");
-    confetti.className = "confetti";
-    confetti.style.left = Math.random() * 100 + "vw";
-    confetti.style.background = "hsl(" + Math.random() * 360 + ", 70%, 50%)";
-    confetti.style.animationDuration = (3 + Math.random() * 5) + "s";
-    document.body.appendChild(confetti);
-}
-</script>
-
+<script src="app.js"></script>
 </body>
 </html>
